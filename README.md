@@ -19,5 +19,5 @@ Useful for creating multi-level drop down menus by using select objects in HTML.
 ~~~
 
 ##License
-Copyright (C) 2012 Chien-Hung Chen under the MIT License
-For more info on the MIT License: http://opensource.org/licenses/mit-license.php/
+- Copyright (C) 2012 Chien-Hung Chen under the MIT License
+- For more info on the MIT License: http://opensource.org/licenses/mit-license.php/
