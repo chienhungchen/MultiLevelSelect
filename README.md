@@ -15,7 +15,7 @@ Useful for creating multi-level drop down menus by using select objects in HTML.
 - call on it as such:
 
 ~~~
-$('#targetdiv').multiLevelSelect(JSON_data_string);
+	$('#targetdiv').multiLevelSelect(JSON_data_string);
 ~~~
 
 ##License
