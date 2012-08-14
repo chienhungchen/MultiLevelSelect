@@ -5,15 +5,12 @@ Useful for creating multi-level drop down menus by using select objects in HTML.
 
 ##Usage
 
-- requires jQuery.
+- It needs jQuery, so make sure it is imported.
 - import multiLevelSelect.js as such:
-	
 ~~~
 	<script src="multiLevelSelect.js"></script>
 ~~~
-
 - call on it as such:
-
 ~~~
 	$('#targetdiv').multiLevelSelect(JSON_data_string);
 ~~~
