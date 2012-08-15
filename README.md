@@ -77,5 +77,5 @@ Below is a snippet of what a JSON data string could look like:
 - **children**: this should hold an array of the same type of object (value, displaytext, children), this array i
 
 ##License
-- Copyright (C) 2012 Chien-Hung Chen under the MIT License
+- Copyright © 2012 Chien-Hung Chen under the MIT License
 - For more info on the MIT License: http://opensource.org/licenses/mit-license.php/
