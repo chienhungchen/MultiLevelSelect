@@ -74,7 +74,7 @@ Below is a snippet of what a JSON data string could look like:
 ###Fields
 - **value**: this is the value that will be displayed as a choice.
 - **displaytext**: the value that you want to display as the instruction text, currently this is required for an object with child options.
-- **children**: this should hold an array of the same type of object (value, displaytext, children), this array i
+- **children**: this should hold an array of the same type of object (value, displaytext, children), this array can be empty if there are no more children. Currently this is required.
 
 ##License
 - Copyright © 2012 Chien-Hung Chen under the MIT License
