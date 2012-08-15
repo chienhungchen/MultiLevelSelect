@@ -31,6 +31,51 @@ Then put this bit of JavaScript somewhere below the HTML object you created:
 
 Take note that the JSON_data_string is a JSON string. Please see below for the format.
 
+##JSON String Format
+
+Below is a snippet of what a JSON data string could look like:
+
+~~~
+{
+	"displaytext": "Please select from one of the following",
+	"children": [
+       				{
+						"value": "Fruit",
+						"displaytext": "Please select from one of the following",
+				 		"children": [
+										{"value": "Kiwi", "children": []},
+										{"value": "Apple", "children": []},
+										{
+											"value": "Berry",
+											"children": [
+															{"value": "Strawberry", "children": []},
+															{"value": "Blueberry", "children": []}
+														]
+										}
+						     		]
+					},
+					{
+						"value": "Vegetable",
+						"displaytext": "Please select from one of the following",
+						"children": [
+										{"value": "Spinach", "children": []},
+										{"value": "Cabbage", "children": []},
+										{"value": "Green Beans", "children": []}
+									]
+					},
+					{
+						"value": "Candy",
+						"children": []
+					}
+    	  	  	]
+}
+~~~
+
+###Fields
+- value: this is the value that will be displayed as a choice.
+- displaytext: the value that you want to display as the instruction text, currently this is required for an object with child options.
+- children: this should hold an array of the same type of object (value, displaytext, children), this array i
+
 ##License
 - Copyright (C) 2012 Chien-Hung Chen under the MIT License
 - For more info on the MIT License: http://opensource.org/licenses/mit-license.php/
