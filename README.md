@@ -8,7 +8,7 @@ Useful for creating multi-level drop down menus by using select objects in HTML.
 MultiLevelSelect.js needs jQuery to work, so make sure you have it, or import it like such:
 
 ~~~
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 ~~~
 
 Now import multiLevelSelect.js as such:
