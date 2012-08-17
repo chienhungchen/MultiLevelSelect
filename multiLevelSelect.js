@@ -66,25 +66,23 @@
 		}
 		//Recursively calls upon itself to add a change() function to each select
 		function onChange(main , selectToFind){
-			$(main).find('#' + selectToFind).first().each(function(){
-				$(this).change(function(){
-					if($(this).val() != $(this).data('displaytext')){
-						if($(this).data('hasGen')){
-							removeSelect(main, $(this).data('index'));
-						}
-						else{
-							$(this).data('hasGen', true);
-						}
-						currentOption = findOptionInData($(this));
-						if(currentOption.children.length > 0){
-							var $br = $("<br />");
-							$br.attr('class', selectIdNameSpace + ($(this).data('index') + 1));
-							$(this).parent().append($br);
-							$(this).parent().append(generateList(currentOption.children, $(this).data('index') + 1, $(this).val(), currentOption.displaytext));
-							onChange(main, selectIdNameSpace + ($(this).data('index') + 1));
-						}
+			$(main).find('#' + selectToFind).first().change(function(){
+				if($(this).val() != $(this).data('displaytext')){
+					if($(this).data('hasGen')){
+						removeSelect(main, $(this).data('index'));
 					}
-				});
+					else{
+						$(this).data('hasGen', true);
+					}
+					currentOption = findOptionInData($(this));
+					if(currentOption.children.length > 0){
+						var $br = $("<br />");
+						$br.attr('class', selectIdNameSpace + ($(this).data('index') + 1));
+						$(this).parent().append($br);
+						$(this).parent().append(generateList(currentOption.children, $(this).data('index') + 1, $(this).val(), currentOption.displaytext));
+						onChange(main, selectIdNameSpace + ($(this).data('index') + 1));
+					}
+				}
 			});
 		}
 		
