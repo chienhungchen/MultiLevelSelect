@@ -77,5 +77,6 @@ Below is a snippet of what a JSON data string could look like:
 - **children**: this should hold an array of the same type of object (value, displaytext, children), this array can be empty if there are no more children. Currently this is required.
 
 ##License
-- Copyright © 2012 Chien-Hung Chen under the MIT License
+- Copyright © 2012 Chien-Hung Chen under the WTFPL License and the MIT License for those who don't get the WTFPL License
+- For more info on the WTFPL License: http://en.wikipedia.org/wiki/WTFPL
 - For more info on the MIT License: http://opensource.org/licenses/mit-license.php/
