@@ -5,7 +5,7 @@ Useful for creating multi-level drop down menus by using select objects in HTML.
 
 ##Usage
 
-MultiLevelSelect.js needs jQuery to work, so make sure you have it, or import it like such:
+MultiLevelSelect.js needs jQuery to work, so make sure you have it (it's also in the jQuery folder if you downloaded this repo), or import it like such from Google CDN:
 
 ~~~
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
