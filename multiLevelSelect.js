@@ -1,36 +1,56 @@
+/********
+* MultiLevelSelect.js
+* Copyright (c) 2012 Chien-Hung Chen
+* Github: https://www.github.com/chienhungchen/MultiLevelSelect
+* Licensed Under the WTFPL (or MIT if that makes you happier)
+********/
+
 (function($, undefined){
-	$.fn.multiLevelSelect = function(dataString){
+	/********
+	* IMPORTANT: This is a jQuery plugin and needs jQuery to function
+	* 	params and their possible values:
+	* 		data: 			JSON string,
+	* 		arrangement: 	vertical or horizontal (defaults to vertical if it is not horizontal)
+	* 		width:  		string or integer value, or default to largest text width for each select
+	* 		clearbutton: 	true or false
+	********/
+	$.fn.multiLevelSelect = function(params){
 		var targetId = $(this).attr('id'); //Getting the id of the target div for future usage
 		var selectIdNameSpace = targetId + '_mls_'; //Starting namespace for the select objects IDs
-		var data = $.parseJSON(dataString); //Parsing the dataString into a JSON object
-
+		var data = $.parseJSON(params.data); //Parsing the dataString into a JSON object
+		if(data === null) { data = params.data; } //makes params.data able to accept a JSON object directly
+		
 		//Generate new select objects
-		function generateList(children, index, parentVal, firstValue){
+		function generateList(children, index, parentVal, firstValue) {
 			var $select = $("<select />");
 			$select.data('index', index);
 			$select.data('parent', parentVal);
 			$select.data('displaytext', firstValue);
 			$select.attr('id', selectIdNameSpace + index);
-			if(firstValue != null || firstValue != undefined){
+			
+			//setting width from param
+			if(params.width != null || params.width != undefined) { $select.css({ width: params.width }); }
+			
+			if(firstValue != null || firstValue != undefined) {
 				$select.append($('<option />').text(firstValue));
 			}
-			for(var i = 0; i < children.length; i++){
+			for(var i = 0; i < children.length; i++) {
 				$select.append($('<option />').text(children[i].value));
 			}
 			return $select;
 		}
 		
 		//Finds the sub-options for a particular option
-		function findOptionInData(currentSelect){
-			var path = [], i, childrenFound = false, current = data.children;
+		function findOptionInData(currentSelect) {
+			var i, path = [], childrenFound = false, current = data.children;
 			if(currentSelect.data('parent') === undefined || currentSelect.data('parent') === null){ //root
 				for(i = 0; i < current.length; i++){
-					if(current[i].value === currentSelect.val()){
+					if(current[i].value === currentSelect.val()) {
 						childrenFound = true;
 						return current[i];
 					}
 				}
-				if(childrenFound === false){ return undefined; }
+				if(childrenFound === false) { return undefined; }
 			}
 			else{
 				for(i = 0; i < currentSelect.data("index"); i++){
@@ -52,41 +72,35 @@
 					childrenFound = false;
 				}
 			}
-			console.log(currentSelect.data('parent'));
-			console.log(currentSelect.data('index'));
 		}
 		
 		//Removes the appropriate select objects when a value has been changed in a previously chosen select menu
-		function removeSelect(main, index){
+		function removeSelect(main, index) {
 			var arr = $(main).find('select');
-			for(var i = index + 1; i < arr.length; i++){
+			for(var i = index + 1; i < arr.length; i++) {
 				$(main).find('#' + selectIdNameSpace + i).remove();
 				$(main).find('br.' + selectIdNameSpace + i).remove();
 			}
 		}
 		//Recursively calls upon itself to add a change() function to each select
-		function onChange(main , selectToFind){
-			$(main).find('#' + selectToFind).first().change(function(){
-				if($(this).val() != $(this).data('displaytext')){
-					if($(this).data('hasGen')){
-						removeSelect(main, $(this).data('index'));
-					}
-					else{
-						$(this).data('hasGen', true);
-					}
-					currentOption = findOptionInData($(this));
-					if(currentOption.children.length > 0){
-						var $br = $("<br />");
+		function onChange(main , selectToFind) {
+			var $br, currentOption;
+			$(main).find('#' + selectToFind).first().change(function() {
+				removeSelect(main, $(this).data('index'));
+				currentOption = findOptionInData($(this));
+				if(currentOption != undefined && currentOption.children.length > 0) {
+					if(params.arrangement != 'horizontal') {
+						$br = $("<br />");
 						$br.attr('class', selectIdNameSpace + ($(this).data('index') + 1));
 						$(this).parent().append($br);
-						$(this).parent().append(generateList(currentOption.children, $(this).data('index') + 1, $(this).val(), currentOption.displaytext));
-						onChange(main, selectIdNameSpace + ($(this).data('index') + 1));
 					}
+					$(this).parent().append(generateList(currentOption.children, $(this).data('index') + 1, $(this).val(), currentOption.displaytext));
+					onChange(main, selectIdNameSpace + ($(this).data('index') + 1));
 				}
 			});
 		}
 		
-		//First Drop Down Menu
+		//Generate first select
 		this.append(generateList(data.children, 0, undefined, data.displaytext));
 		onChange(this, selectIdNameSpace + '0');
 	};
