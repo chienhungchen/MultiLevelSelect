@@ -26,12 +26,18 @@ Then create an HTML object where you want the drop down menus to be:
 Then put this bit of JavaScript somewhere below the HTML object you created:
 
 ~~~
-	$('#targetdiv').multiLevelSelect(JSON_data_string);
+	$('#targetdiv').multiLevelSelect({
+		data: JSON_data_string,
+		arrangement: 'vertical'
+	});
 ~~~
 
-Take note that the JSON_data_string is a JSON string. Please see below for the format.
+###Plugin Parameters
+- **data:** either a JSON object or a JSON string (see the format in the Data Format section).
+- **arrangement:** 'vertical' or 'horizontal', this will default to 'vertical' if the value is not specified or if it is not 'horizontal'.
+- **width:** could be integer values or string in the format of '100px' or '50%'
 
-##JSON String Format
+##Data Format (can be in JSON String Format or an JSON object)
 
 Below is a snippet of what a JSON data string could look like:
 
@@ -72,9 +78,9 @@ Below is a snippet of what a JSON data string could look like:
 ~~~
 
 ###Fields
-- **value**: this is the value that will be displayed as a choice.
-- **displaytext**: the value that you want to display as the instruction text, currently this is required for an object with child options.
-- **children**: this should hold an array of the same type of object (value, displaytext, children), this array can be empty if there are no more children. Currently this is required.
+- **value:** this is the value that will be displayed as a choice.
+- **displaytext:** the value that you want to display as the instruction text, currently this is required for an object with child options.
+- **children:** this should hold an array of the same type of object (value, displaytext, children), this array can be empty if there are no more children. Currently this is required.
 
 ##License
 - Copyright © 2012 Chien-Hung Chen under the WTFPL License and the MIT License for those who don't get the WTFPL License
