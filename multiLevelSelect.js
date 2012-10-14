@@ -9,9 +9,9 @@
 	/********
 	* IMPORTANT: This is a jQuery plugin and needs jQuery to function
 	* 	params and their possible values:
-	* 		data: 			JSON string,
+	* 		data: 		JSON string,
 	* 		arrangement: 	vertical or horizontal (defaults to vertical if it is not horizontal)
-	* 		width:  		string or integer value, or default to largest text width for each select
+	* 		width:  	string or integer value, or default to largest text width for each select
 	* 		clearbutton: 	true or false
 	********/
 	$.fn.multiLevelSelect = function(params){
