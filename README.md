@@ -1,4 +1,4 @@
-#jQuery Plugin: Multi-Level Drop Down Menu
+#jQuery Plugin: MultiLevelSelect.js
 
 Useful for creating multi-level drop down menus by using select objects in HTML. It takes in a JSON string containing the data for each select option and its children options.
 
