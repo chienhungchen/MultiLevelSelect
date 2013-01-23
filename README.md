@@ -84,7 +84,7 @@ Below is a snippet of what a JSON data string could look like:
 - **children:** this should hold an array of the same type of object (value, displaytext, children), this array can be empty if there are no more children. Currently this is required.
 
 ##License
-The MIT License
+Licensed under the MIT License
 
 Copyright (c) 2013 Chien-Hung Chen
 
